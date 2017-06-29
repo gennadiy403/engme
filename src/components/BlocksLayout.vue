@@ -7,6 +7,7 @@
       key="item.title"
       :block="item"
       )
+    .placeholder(v-for="item in blocks")
 </template>
 
 <script>
@@ -44,4 +45,12 @@
       width 100%
       color #a4bdd5
       text-align center
+    .placeholder
+      visibility hidden
+      height 0
+      width 225px
+      padding 0
+      margin 0
+      border-top-width 0
+      border-bottom-width 0
 </style>
