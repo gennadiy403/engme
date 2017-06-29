@@ -1,16 +1,11 @@
 <template lang="pug">
-  .blocks-layout(@scroll="scroll($event)")
+  .blocks-layout
     .not-found(v-if="!blocks.length") По заданным условиям материалов не найдено
     video-block(
       v-for="item in blocks"
-      v-if="blocks.length"
-      key="item.updated_at"
+      v-show="blocks.length && item.title.includes(phrase)"
+      key="item.title"
       :block="item"
-      )
-    infinite-loading.loader(
-      v-if="this.list.length < this.blocks.length"
-      :on-infinite="onInfinite"
-      ref="infiniteLoading"
       )
 </template>
 
@@ -18,38 +13,10 @@
   import VideoBlock from './VideoBlock'
   import InfiniteLoading from 'vue-infinite-loading'
   export default {
-    props: ['search_phrase', 'search_phrase', 'blocks', 'selected_category'],
+    props: ['blocks', 'selected_category', 'phrase'],
     data () {
       return {
         list: []
-      }
-    },
-    methods: {
-      onInfinite () {
-        setTimeout(() => {
-          const temp = []
-          for (let i = this.list.length + 1; i <= this.list.length + 20; i++) {
-            if (i > this.blocks.length) return
-            temp.push(this.blocks[i])
-          }
-          if (this.list.length >= this.blocks.length) return
-          this.list = this.list.concat(temp)
-          this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
-        }, 500)
-      }
-    },
-    computed: {
-      filtredBlocks () {
-        let arr = this.list.filter(block => {
-          // console.log(block)
-          return block.category === this.selected_category.value
-        })
-        return arr
-      }
-    },
-    watch: {
-      'this.blocks' () {
-        console.log('watch')
       }
     },
     components: {

@@ -14,6 +14,7 @@
       :selected_category="selected_category"
       :blocks="filtered"
       :search_phrase="searchPhrase"
+      :phrase="phrase"
       )
 </template>
 <script>
@@ -25,18 +26,16 @@
     name: 'app',
     data () {
       return {
+        filtered: [],
+        blocks: [],
         elements_count: {
           count: null
         },
-        filtered: [],
         selected_category: {
           name: '',
           value: ''
         },
-        phrase: {
-          text: ''
-        },
-        blocks: [],
+        phrase: '',
         active_category: '',
         categories: [
           {
@@ -93,7 +92,7 @@
         this.selected_category.value = category.value
         let filtred = this.blocks.filter(block => {
           if (this.selected_category.value === '') {
-            return block.category
+            return true
           } else {
             return block.category === this.selected_category.value
           }
@@ -106,9 +105,6 @@
       },
       searchPhrase (text) {
         this.phrase = text
-        this.filtered = this.blocks.filter(block => {
-          return block.title.includes(text)
-        })
       }
     },
     created () {

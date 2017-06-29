@@ -11,6 +11,7 @@
     blocks-layout(
       :selected_category="selected_category"
       :blocks="blocks"
+      :phrase="phrase"
       )
 </template>
 
@@ -19,7 +20,7 @@
   import SearchBar from './SearchBar'
   import BlocksLayout from './BlocksLayout'
   export default {
-    props: ['selected_category', 'blocks', 'elements_count', 'search_phrase'],
+    props: ['selected_category', 'blocks', 'elements_count', 'search_phrase', 'phrase'],
     components: {
       OrderBar,
       SearchBar,
