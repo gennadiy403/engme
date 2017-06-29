@@ -1,6 +1,6 @@
 <template lang="pug">
-  .blocks-layout
-    .not-found(v-if="!blocks.length") В выбранном разделе пока отсутствуют материалы
+  .blocks-layout(@scroll="scroll($event)")
+    .not-found(v-if="!blocks.length") По заданным условиям материалов не найдено
     video-block(
       v-for="item in blocks"
       v-if="blocks.length"

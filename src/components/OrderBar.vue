@@ -46,7 +46,6 @@ export default {
     },
     sortByPopularity (items) {
       items.sort(function (a, b) {
-        console.log(a.popularity)
         if (a.popularity > b.popularity) {
           return -1
         }
@@ -55,11 +54,9 @@ export default {
         }
         return 0
       })
-      console.log(items)
     },
     sortByDate (items) {
       items.sort(function (a, b) {
-        console.log(a.updated_at)
         if (a.updated_at > b.updated_at) {
           return -1
         }
@@ -68,7 +65,6 @@ export default {
         }
         return 0
       })
-      console.log(items)
     }
   }
 }

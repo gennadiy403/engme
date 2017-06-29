@@ -105,7 +105,6 @@
         })
       },
       searchPhrase (text) {
-        console.log(text)
         this.phrase = text
         this.filtered = this.blocks.filter(block => {
           return block.title.includes(text)
@@ -118,7 +117,6 @@
         this.blocks = response.data
         this.filtered = this.blocks
         this.elements_count.count = this.blocks.length
-        console.log(response.data)
       })
       .catch(e => {
         this.errors.push(e)
