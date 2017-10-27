@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "pug": "^2.0.0-rc.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
